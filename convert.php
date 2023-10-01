@@ -15,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($format === "pdf") {
             // Convert to PDF (example: for images)
             if (move_uploaded_file($tmpName, $convertedFilePath)) {
-                header("Content-Type: application/octet-stream");
-                header("Content-Disposition: attachment; filename=\"$convertedFileName\"");
-                readfile($convertedFilePath);
-                exit();
+                // Inside the relevant section where the file is moved and converted
+header("Content-Type: application/octet-stream");
+header("Content-Disposition: attachment; filename=\"$convertedFileName\"");
+readfile($convertedFilePath);
+exit();
             }
         } elseif ($format === "jpg") {
             // Convert to JPG (example: for images)
