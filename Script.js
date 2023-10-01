@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const outputFormatSelect = document.getElementById("output-format");
     const convertButton = document.getElementById("convert-button");
     const resultMessage = document.getElementById("result-message");
-    const downloadLink = document.getElementById("download-link");
 
     let uploadedFile = null;
 
@@ -33,15 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 body: formData,
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    downloadLink.href = data.filename;
-                    downloadLink.style.display = "block";
-                    {
-    "success": true,
-    "filename": "uploads/converted.pdf" // Actual path to the converted file
-                    }
+            .then(response => {
+                // Handle the response as needed
+                if (response.ok) {
+                    // Trigger the download by navigating to convert.php
+                    window.location.href = "convert.php";
                     resultMessage.textContent = "File converted successfully!";
                 } else {
                     resultMessage.textContent = "Error converting file.";
