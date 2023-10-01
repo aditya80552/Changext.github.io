@@ -23,11 +23,28 @@ document.addEventListener("DOMContentLoaded", function () {
         if (uploadedFile) {
             // Simulated file conversion (replace with actual conversion logic)
             // For example, for PDF to image conversion:
-             resultMessage.textContent = "File converted successfully!";
+           //  resultMessage.textContent = "File converted successfully!";
+            
+         const formData = new FormData();
+            formData.append("file", uploadedFile);
+            formData.append("format", selectedFormat);
+            fetch("convert.php", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                // Handle the converted file
+                const objectURL = URL.createObjectURL(blob);
+                downloadLink.href = objectURL;
+                downloadLink.style.display = "block";
 
+                // Display a success message
+                resultMessage.textContent = "File converted successfully!";
+            })
             // Set the download link and show it
-            downloadLink.href = "#"; // Replace with the actual download link
-            downloadLink.style.display = "block";
+          //  downloadLink.href = "#"; // Replace with the actual download link
+        //  downloadLink.style.display = "block";
 
             // Show social media sharing buttons
             socialMediaSharing.style.display = "block";
