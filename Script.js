@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fileInput.addEventListener("change", function () {
         uploadedFile = fileInput.files[0];
+        if (uploadedFile) {
+            resultMessage.textContent = `Selected file: ${uploadedFile.name}`;
+        } else {
+            resultMessage.textContent = "No file selected.";
+        }
     });
 
     convertButton.addEventListener("click", function () {
@@ -31,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    downloadLink.href = "uploads/" + data.filename;
+                    downloadLink.href = data.filename;
                     downloadLink.style.display = "block";
                     resultMessage.textContent = "File converted successfully!";
                 } else {
