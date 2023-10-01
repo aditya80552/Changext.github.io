@@ -48,13 +48,10 @@ imgElement.src = temporaryUrl;
 
 // To create a download link for the file
 const downloadLink = document.getElementById("download-link");
-downloadLink.href = temporaryUrl;
-downloadLink.download = "filename.ext"; // Specify the desired filename
-                // Create a temporary URL for the blob
-                const url = window.URL.createObjectURL(blob);
-                downloadLink.href = url;
-                downloadLink.download = `converted.${selectedFormat}`;
-                downloadLink.style.display = "block";
+// Inside the fetch success block after creating a temporary URL for the blob
+downloadLink.href = url;
+downloadLink.download = `converted.${selectedFormat}`;
+downloadLink.style.display = "block";
                 resultMessage.textContent = "File converted successfully!";
             })
             .catch(error => {
