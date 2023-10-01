@@ -35,21 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(response => response.blob())
             .then(blob => {
-                // Assuming you have a Blob or File object (e.g., after a successful fetch)
-const fileBlob = ...; // Replace with your actual Blob or File object
-
-// Create a temporary URL for the file
-const temporaryUrl = URL.createObjectURL(fileBlob);
-
-// Now, you can use the temporary URL as needed
-// For example, to display an image in an <img> element
-const imgElement = document.getElementById("image");
-imgElement.src = temporaryUrl;
-
-// To create a download link for the file
-const downloadLink = document.getElementById("download-link");
-// Inside the fetch success block after creating a temporary URL for the blob
-downloadLink.href = url;
+                downloadLink.href = url;
 downloadLink.download = `converted.${selectedFormat}`;
 downloadLink.style.display = "block";
                 resultMessage.textContent = "File converted successfully!";
