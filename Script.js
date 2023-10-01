@@ -20,45 +20,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedFormat = outputFormatSelect.value;
 
         if (uploadedFile) {
-            // Create a FormData object to send data to the PHP script
             const formData = new FormData();
             formData.append("file", uploadedFile);
             formData.append("format", selectedFormat);
 
-            // Send a POST request to the PHP script for conversion
             fetch("convert.php", {
                 method: "POST",
                 body: formData,
             })
-            .then(response => response.blob())
-            .then(blob => {
-                // Handle the converted file
-                const objectURL = URL.createObjectURL(blob);
-                downloadLink.href = objectURL;
-                downloadLink.style.display = "block";
-
-                // Display a success message
-                resultMessage.textContent = "File converted successfully!";
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    downloadLink.href = "uploads/" + data.filename;
+                    downloadLink.style.display = "block";
+                    resultMessage.textContent = "File converted successfully!";
+                } else {
+                    resultMessage.textContent = "Error converting file.";
+                }
             })
             .catch(error => {
                 console.error("Error:", error);
                 resultMessage.textContent = "Error converting file.";
             });
-        } if (selectedFormat === "pdf") {
-                // For PDF conversion
-                resultMessage.textContent = "File converted to PDF!";
-            } else if (selectedFormat === "jpg") {
-                // For JPG conversion (images)
-                resultMessage.textContent = "File converted to JPG!";
-            } else if (selectedFormat === "doc") {
-                // For DOC conversion (text-based files)
-                resultMessage.textContent = "File converted to DOC!";
-            }
-
-            // Set the download link and show it
-            downloadLink.href = <a id="download-link">; // Replace with the actual download link
-            downloadLink.style.display = "block";
         } else {
             resultMessage.textContent = "Please select a file first.";
+        }
     });
 });
