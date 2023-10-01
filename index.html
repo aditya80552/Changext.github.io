@@ -13,23 +13,23 @@
     <main>
         <section id="file-upload">
             <h2>Upload a File</h2>
-            <input type="file" id="file-input" name="file">
+            <input type="file" id="file-input" name="file" accept="image/*">
             <button id="upload-button">Upload</button>
         </section>
         <section id="conversion-options">
             <h2>Conversion Options</h2>
             <label for="output-format">Choose Output Format:</label>
             <select id="output-format">
-                <option value="pdf">PDF</option>
                 <option value="jpg">JPG</option>
-                <option value="doc">DOC</option>
+                <option value="png">PNG</option>
+                <option value="pdf">PDF</option>
+                <!-- Add more options as needed -->
             </select>
             <button id="convert-button">Convert</button>
         </section>
         <section id="conversion-result">
             <h2>Conversion Result</h2>
             <div id="result-message"></div>
-            <a href="convert.php" id="download-link" style="display: none;">Download Converted File</a>
         </section>
     </main>
     <script src="Script.js"></script>
