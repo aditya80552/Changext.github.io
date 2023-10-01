@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.success) {
                     downloadLink.href = data.filename;
                     downloadLink.style.display = "block";
+                    {
+    "success": true,
+    "filename": "uploads/converted.pdf" // Actual path to the converted file
+                    }
                     resultMessage.textContent = "File converted successfully!";
                 } else {
                     resultMessage.textContent = "Error converting file.";
