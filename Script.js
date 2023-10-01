@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const convertButton = document.getElementById("convert-button");
     const resultMessage = document.getElementById("result-message");
     const downloadLink = document.getElementById("download-link");
-    const socialMediaSharing = document.getElementById("social-media-sharing");
 
     let uploadedFile = null;
 
@@ -21,13 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedFormat = outputFormatSelect.value;
 
         if (uploadedFile) {
-            // Simulated file conversion (replace with actual conversion logic)
-            // For example, for PDF to image conversion:
-           //  resultMessage.textContent = "File converted successfully!";
-            
-         const formData = new FormData();
+            // Create a FormData object to send data to the PHP script
+            const formData = new FormData();
             formData.append("file", uploadedFile);
             formData.append("format", selectedFormat);
+
+            // Send a POST request to the PHP script for conversion
             fetch("convert.php", {
                 method: "POST",
                 body: formData,
@@ -42,33 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Display a success message
                 resultMessage.textContent = "File converted successfully!";
             })
-            // Set the download link and show it
-          //  downloadLink.href = "#"; // Replace with the actual download link
-        //  downloadLink.style.display = "block";
-
-            // Show social media sharing buttons
-            socialMediaSharing.style.display = "block";
+            .catch(error => {
+                console.error("Error:", error);
+                resultMessage.textContent = "Error converting file.";
+            });
         } else {
             resultMessage.textContent = "Please select a file first.";
         }
     });
-
-    // Social media sharing functions
-    const shareOnFacebook = () => {
-        const url = encodeURIComponent(window.location.href);
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
-    };
-
-    const shareOnTwitter = () => {
-        const text = encodeURIComponent("Check out this converted file!");
-        const url = encodeURIComponent(window.location.href);
-        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, "_blank");
-    };
-
-    // Add event listeners for sharing buttons
-    const shareFacebookButton = document.getElementById("share-facebook");
-    const shareTwitterButton = document.getElementById("share-twitter");
-
-    shareFacebookButton.addEventListener("click", shareOnFacebook);
-    shareTwitterButton.addEventListener("click", shareOnTwitter);
 });
