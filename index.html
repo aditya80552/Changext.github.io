@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles.css">
     <title>File Converter</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>File Converter</h1>
-        <input type="file" id="file-input" accept=".pdf, .jpg, .doc">
-        <button id="upload-button">Upload File</button>
-        <p id="result-message">No file selected.</p>
-        <select id="output-format">
-            <option value="pdf">PDF</option>
-            <option value="jpg">JPG</option>
-            <option value="doc">DOC</option>
-        </select>
-        <button id="convert-button">Convert</button>
-        <a href="uploads/converted.pdf" id="download-link" style="display: none;">Download Converted File</a>
-    </div>
-    <script src="Script.js"></script>
+    </header>
+    <main>
+        <section id="file-upload">
+            <h2>Upload a File</h2>
+            <input type="file" id="file-input" name="file">
+            <button id="upload-button">Upload</button>
+        </section>
+        <section id="conversion-options">
+            <h2>Conversion Options</h2>
+            <label for="output-format">Choose Output Format:</label>
+            <select id="output-format">
+                <option value="pdf">PDF</option>
+                <option value="jpg">JPG</option>
+                <option value="doc">DOC</option>
+            </select>
+            <button id="convert-button">Convert</button>
+        </section>
+        <section id="conversion-result">
+            <h2>Conversion Result</h2>
+            <div id="result-message"></div>
+            <a href="convert.php" id="download-link" style="display: none;">Download Converted File</a>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
