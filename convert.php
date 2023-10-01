@@ -5,26 +5,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     if (isset($_FILES["file"]) && $_FILES["file"]["error"] === UPLOAD_ERR_OK) {
         $tmpName = $_FILES["file"]["tmp_name"];
-        $fileName = basename($_FILES["file"]["name"]);
         $convertedFileName = "converted." . $format;
         
-        // Check the selected format and perform the appropriate conversion
-        if ($format === "jpg") {
-            // Convert to JPG (example: for images)
-            $image = imagecreatefrompng($tmpName);
-            imagejpeg($image, $uploadDir . $convertedFileName, 100);
-            imagedestroy($image);
-        } elseif ($format === "pdf") {
-            // Convert to PDF (example: for images)
-            exec("convert $tmpName $uploadDir$convertedFileName");
+        // Simulated conversion (replace with actual conversion logic)
+        if ($format === "pdf") {
+            // PDF conversion (placeholder)
+            copy($tmpName, $uploadDir . $convertedFileName);
+        } elseif ($format === "jpg") {
+            // JPG conversion (placeholder)
+            copy($tmpName, $uploadDir . $convertedFileName);
+        } elseif ($format === "doc") {
+            // DOC conversion (placeholder)
+            copy($tmpName, $uploadDir . $convertedFileName);
         } else {
-            // Handle other formats here (e.g., Word to PDF, PNG to JPG, etc.)
-            // You need to implement logic for each supported format
-            // Example: 
-            // if ($format === "doc") {
-            //     // Convert to PDF or another suitable format
-            //     // ...
-            // }
+            // Handle other formats as needed
+            // You can show an error message or handle other formats here
         }
 
         // Set the response header for downloading the converted file
