@@ -44,8 +44,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Error:", error);
                 resultMessage.textContent = "Error converting file.";
             });
+        } if (selectedFormat === "pdf") {
+                // For PDF conversion
+                resultMessage.textContent = "File converted to PDF!";
+            } else if (selectedFormat === "jpg") {
+                // For JPG conversion (images)
+                resultMessage.textContent = "File converted to JPG!";
+            } else if (selectedFormat === "doc") {
+                // For DOC conversion (text-based files)
+                resultMessage.textContent = "File converted to DOC!";
+            }
+
+            // Set the download link and show it
+            downloadLink.href = <a id="download-link">; // Replace with the actual download link
+            downloadLink.style.display = "block";
         } else {
             resultMessage.textContent = "Please select a file first.";
-        }
     });
 });
