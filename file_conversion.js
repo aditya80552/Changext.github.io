@@ -1,27 +1,5 @@
-// Add event listener to the submit button
-document.querySelector('form button').addEventListener('click', function() {
-  // Get the file and format from the form
-// Add event listener to the social media sharing buttons
-document.querySelector('.facebook-share').addEventListener('click', function() {
-  // Share the converted file on Facebook
-});
+// JavaScript code
 
-document.querySelector('.twitter-share').addEventListener('click', function() {
-  // Share the converted file on Twitter
-});
-
-document.querySelector('.linkedin-share').addEventListener('click', function() {
-  // Share the converted file on LinkedIn
-});
-
-  const file = document.querySelector('#file-input').files[0];
-  const format = document.querySelector('#format-select').value;
-
-  // Start the conversion process
-  convertFile(file, format);
-});
-
-// Convert the file to the desired format
 function convertFile(file, format) {
   // Make a POST request to the backend server to convert the file
   const xhr = new XMLHttpRequest();
@@ -50,6 +28,5 @@ function convertFile(file, format) {
     } else {
       // Handle error
       console.log('Error converting file:', xhr.statusText);
-    }
-  };
+    } };
 }
