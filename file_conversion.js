@@ -1,6 +1,19 @@
 // Add event listener to the submit button
 document.querySelector('form button').addEventListener('click', function() {
   // Get the file and format from the form
+// Add event listener to the social media sharing buttons
+document.querySelector('.facebook-share').addEventListener('click', function() {
+  // Share the converted file on Facebook
+});
+
+document.querySelector('.twitter-share').addEventListener('click', function() {
+  // Share the converted file on Twitter
+});
+
+document.querySelector('.linkedin-share').addEventListener('click', function() {
+  // Share the converted file on LinkedIn
+});
+
   const file = document.querySelector('#file-input').files[0];
   const format = document.querySelector('#format-select').value;
 
